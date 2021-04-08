@@ -30,7 +30,7 @@ function setMap(){
     var promises = [];
     promises.push(d3.csv("data/WestAfrica_IMF.csv"));                    
     promises.push(d3.json("data/AfricaShapefile.topojson"));                    
-    promises.push(d3.json("data/WestAfrica.topojson"));
+    promises.push(d3.json("data/WestAfrica1.topojson"));
     Promise.all(promises).then(callback);
 
     //callback function to get everything loaded at the same tiem
@@ -60,7 +60,7 @@ function setMap(){
         //translate africa TopoJSON
         var africaCountries = topojson.feature(africa, africa.objects.AfricaShapefile),
             westAfricaCountries = topojson.feature(westAfrica, westAfrica.objects.WestAfrica).features;
-
+            console.log(westAfricaCountries);
         //add African countries to map
         var countries = map1.append("path")
             .datum(africaCountries)
